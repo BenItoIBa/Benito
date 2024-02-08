@@ -1,3 +1,4 @@
+//shared with Mr Hansen successfully
 const byte LEDPIN = 13;
 const byte PAWPIN1 = 1;
 const byte PAWPIN2 = 2;
