@@ -1,9 +1,15 @@
+#include <Servo.h>
+
 const byte LEDPIN = 13;
 const byte PAWPIN1 = 1;
 const byte PAWPIN2 = 2;
 const byte PAWPIN3 = 3;
 const byte PAWPIN4 = 4;
+const byte LEFTEARPIN = 9;
+const byte RIGHTEARPIN = 10;
 
+Servo leftEar;
+Servo rightEar;
 
 void setup() {
   pinMode(LEDPIN, OUTPUT);
@@ -11,6 +17,8 @@ void setup() {
   pinMode(PAWPIN2, INPUT);
   pinMode(PAWPIN3, INPUT);
   pinMode(PAWPIN4, INPUT);
+  leftEar.attach(LEFTEARPIN);
+  rightEar.attach(RIGHTEARPIN);
 }
 
 void loop() {
@@ -21,18 +29,29 @@ void loop() {
     digitalWrite(LEDPIN, LOW);
   }
   if (digitalRead(PAWPIN3) == HIGH){
-    playMusic();
+    wagEars();
   }
   if (digitalRead(PAWPIN4) == HIGH){
-    int score = playGame();
+    blinkingLed();
   }
 }
 
-void playMusic(){
-
+void wagEars(){
+  leftEar.write(0);
+  rightEar.write(0);
+  leftEar.write(90);
+  rightEar.write(90);
+  leftEar.write(0);
+  rightEar.write(0);
 }
 
-int playGame();{
-  byte score = 99;
-  return  score;
+void blinkingLed(){
+  byte randNumber = random(1, 3);
+
+  for (int i = 0; i < randNumber; i++) {
+  digitalWrite(LEDPIN, HIGH);
+  delay(500);
+  digitalWrite(LEDPIN, LOW);
+  delay(500);
+  }
 }
