@@ -1,5 +1,5 @@
 #include <Adafruit_LiquidCrystal.h>
-
+//HAN COMMENT I have fixed some minor errors. would be nice to indent and comment your code
 const byte BINPIN = 1;
 const byte NOISEPIN = A0;
 const byte POTPIN = A1;
@@ -9,18 +9,16 @@ Adafruit_LiquidCrystal screen(0);
 void setup() {
   pinmode(BINPIN,INPUT);
 pinmode(POTPIN,INPUT);
-}
 
 randomSeed(analogRead(NOISEPIN));
 
 Serial.begin(9600);
 
-
 if (!screen.begin(16,2)) {
   Serial.println("couldn't start the screen? check wiring");
   while(1):
 }
-
+}
 void loop() {
   if(digitalRead(BINPIN) == HIGH) {
     Serial.println("Rolling Dice");
@@ -66,5 +64,5 @@ void rollDice(byte numSides) {
     Serial.println("Issue with mapping potentiometer values");
     break;
   }
-  screen.println(diceRoll)
+  screen.println(diceRoll);
 }
